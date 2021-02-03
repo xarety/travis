@@ -28,3 +28,5 @@ jobs:
         script:
           - echo "deploy" > deploy.txt
           - ls -la
+        on:
+          branches: main
