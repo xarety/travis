@@ -4,12 +4,15 @@ node_js:
   - 14
 
 script:
-  - echo "test" > test.txt
+  - echo "build" > build.txt
   - ls -la
 
 jobs:
   include:
     - stage: test
+      script:
+        - echo "test" > test.txt
+        - ls -la
       if: node_js = 14
       workspaces:
         create:
