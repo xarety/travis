@@ -1,16 +1,17 @@
 language: node_js
-node_js:
-  - 12
-  - 14
-
-script:
-  - echo "build & test" > bundle.txt
-  - ls -la
-  - node -v
 
 jobs:
   include:
-    - if: node_js == 14
+    - node_js: 12
+      script:
+        - echo "build & test" > bundle.txt
+        - ls -la
+        - node -v
+    - node_js: 14
+      script:
+        - echo "build & test" > bundle.txt
+        - ls -la
+        - node -v
       workspaces:
         create:
           name: bundle
