@@ -11,10 +11,10 @@ jobs:
   include:
     - stage: test
       if: node_js = 14
-        workspaces:
-            create:
-                name: bundle
-                paths: .
+      workspaces:
+        create:
+          name: bundle
+          paths: .
     - stage: deploy
       node_js: 14
       deploy:
