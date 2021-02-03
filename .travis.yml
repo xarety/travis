@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+    - 12
+    - 14
+
+jobs:
+    include:
+        - stage: test
+          script:
+              - echo "test" > test.txt
+              - ls -la
+        - stage: deploy
+          deploy:
+              skip_cleanup: true
+              provider: script
+              script:
+                  - echo "deploy" > deploy.txt
+                  - ls -la
+
+stages:
+    - test
+    - deploy
