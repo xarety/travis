@@ -4,29 +4,30 @@ node_js:
   - 14
 
 script:
-  - echo "build" > build.txt
+  - echo "build & test" > bundle.txt
   - ls -la
+  - node -v
 
 jobs:
   include:
-    - stage: test
-      script:
-        - echo "test" > test.txt
-        - ls -la
-      if: node_js = 14
+    - stage: bundle
+      if: node_js == 14
       workspaces:
         create:
           name: bundle
           paths: .
     - stage: deploy
-      node_js: 14
+      node_js: "14"
       workspaces:
         use: bundle
       deploy:
         skip_cleanup: true
         provider: script
         script:
-          - echo "deploy" > deploy.txt
+          - echo "build & test" > bundle.txt
           - ls -la
-        on:
-          branches: main
+
+stages:
+  - bundle
+  - name: deploy
+    if: branch == master
