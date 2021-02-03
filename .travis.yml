@@ -1,14 +1,20 @@
 language: node_js
+node_js:
+  - 12
+  - 14
+
+script:
+  - echo "test" > test.txt
+  - ls -la
 
 jobs:
   include:
     - stage: test
-      node_js:
-        - 12
-        - 14
-      script:
-        - echo "test" > test.txt
-        - ls -la
+      if: node_js = 14
+        workspaces:
+            create:
+                name: bundle
+                paths: .
     - stage: deploy
       node_js: 14
       deploy:
