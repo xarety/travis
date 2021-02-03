@@ -1,11 +1,11 @@
 language: node_js
-node_js:
-  - 12
-  - 14
 
 jobs:
   include:
     - stage: test
+      node_js:
+        - 12
+        - 14
       script:
         - echo "test" > test.txt
         - ls -la
