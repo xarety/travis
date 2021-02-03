@@ -17,6 +17,8 @@ jobs:
           paths: .
     - stage: deploy
       node_js: 14
+      workspaces:
+        use: bundle
       deploy:
         skip_cleanup: true
         provider: script
