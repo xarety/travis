@@ -19,12 +19,6 @@ jobs:
       node_js: "14"
       workspaces:
         use: bundle
-      deploy:
-        skip_cleanup: true
-        provider: script
-        script: echo "deploy" > deploy.txt && ls -la
-
-stages:
-  - test
-  - name: deploy
-    if: branch == master
+      script:
+        - echo "deploy" > deploy.txt
+        - ls -la
