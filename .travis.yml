@@ -10,6 +10,7 @@ jobs:
         - echo "test" > test.txt
         - ls -la
     - stage: deploy
+      node_js: 14
       deploy:
         skip_cleanup: true
         provider: script
